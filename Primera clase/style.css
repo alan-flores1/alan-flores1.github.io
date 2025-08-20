@@ -1,0 +1,33 @@
+body {
+    background-color: #ffffff; /* Color de fondo */
+    font-family: Arial, sans-serif;
+    text-align: center; /* Centrar texto e imagen */
+}
+
+.superior {
+ /* Fondo para el encabezado */
+    padding: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.superior h1 {
+    margin: 5px 0;
+}
+
+.contenedor img{
+    border-radius: 100px;
+    position:relative;
+    top:50px;
+    width:300px;
+    align-items: center;
+    text-align: center;
+    
+}
+
+p {
+    margin-top: 70px; /* Mueve el párrafo 30px hacia abajo */
+    text-align: ; /* Centra el texto si quieres */
+    width: 100%; /* Opcional: ancho del párrafo */
+    margin-left: auto;
+    margin-right: auto;
+}  
