@@ -5,24 +5,104 @@ body {
 .nav-link {
   color: red !important;
 }
- .nav {
-      margin-bottom: 70px;}
+
+
 
 .card-img-top,
 .card-img-top2,
 .card-img-top3 {
-
-  height: 250px;           
-  width: 100%;
-  object-fit: contain;   
-  background-color: #000; 
-  padding: 5px;          
+  height: 280px;          
+  object-fit: contain;     
+  background-color: #000;  
+  padding: 5px;
 }
 
+.nav {
+  background-color: rgba(36, 0, 0, 0.8); /* casi negro con un tinte rojo */
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff !important;  /* blanco puro para contraste */
+  transition: color 0.2s ease;
+}
+.nav-link.active {
+  color: #ff2e2e !important; /* rojo para la sección activa */
+}
+
+.nav-link:hover {
+  color: #ff2e2e !important;  /* rojo al pasar el mouse */
+}
+
+
 .card {
-  max-width: 250px;      /* ancho máximo estilo tienda */
-  margin: auto;          /* centra cada card */
-  background-color: #1a1a1a; 
+  max-width: 260px;
+  margin: 20px auto; 
+  background-color: #1a1a1a;
   border: 1px solid #ff2e2e;
-  border-radius: 8px;    /* bordes suaves */
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+
+.card-body, 
+.card-footer, 
+.card-title, 
+.card-text, 
+.card-footer small {
+  color: #f5f5f5 ;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border: 1px solid #ff2e2e;
+  box-shadow: 0 0 15px rgba(255, 46, 46, 0.5); /
+}
+
+.card-img-top {
+  height: 280px;
+  object-fit: contain;
+  background-color: #000;
+  padding: 5px;
+}
+
+.btn-danger {
+  background-color: #ff2e2e;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #cc2222;
+}
+.carousel-control-prev {
+  left: -70px; 
+}
+
+.carousel-control-next {
+  right: -70px; 
+}
+
+h2 {
+  color: #ff0000; 
+}
+
+p {
+  color: #d9d9d9; 
+  line-height: 1.6;
+}
+
+.capcom-logo {
+  position: fixed;    /* Siempre visible, incluso al hacer scroll */
+  top: 20px;          /* Ajusta distancia desde arriba */
+  right: 20px;        /* Ajusta distancia desde la derecha */
+  width: 170px;       /* Ajusta el tamaño del logo */
+  height: auto;
+  z-index: 1000;      /* Para que quede sobre todo */
+  pointer-events: none; /* Para que no interfiera con clicks */
 }
