@@ -7,3 +7,23 @@ body {
 }
  .nav {
       margin-bottom: 70px;}
+
+  .card-img-top {
+  height: 300px;
+  object-fit: cover; 
+  width: 99%; /
+}
+.card-img-top2{
+   height: 300px; 
+  object-fit: cover; 
+  width: 100%;
+
+}
+
+.card-img-top3{
+   height: 300px; 
+  object-fit: cover; 
+  width: 100%;
+
+}
+
