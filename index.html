@@ -8,14 +8,27 @@
       background-position: top; 
       background-repeat: no-repeat; 
       background-attachment: fixed; 
+      position: relative;
     }
+
+    body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1; 
+}
     
   </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DmcMania</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
@@ -37,10 +50,10 @@
 
   <section id="VJ" style="padding: 30px;" >
   <h2>VideoJuegos</h2>
-  <p>Versiones japonesas/Estadounidensas de todos los juegos de la franquicia... <style> </style></p>
+  <p class="semitransparente">Versiones japonesas/Estadounidensas de todos los juegos de la franquicia... <style> </style></p>
   
 
-  <div id="catalogoCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div id="catalogoCarouselVj" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
 
     <div class="carousel-item active">
@@ -51,7 +64,7 @@
             <div class="card-body">
               <h5 class="card-title">DMC3SE JAP</h5>
               <p class="card-text">Ps2 sellado.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $29.99</small>
@@ -65,7 +78,7 @@
             <div class="card-body">
               <h5 class="card-title">DMC5 SE</h5>
               <p class="card-text">Sellado Ps5.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $49.99</small>
@@ -79,7 +92,7 @@
             <div class="card-body">
               <h5 class="card-title">DMC 5th Aniversary</h5>
               <p class="card-text">Sellado Ps2.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $39.99</small>
@@ -92,10 +105,10 @@
     
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="prev" >
+  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarouselVj" data-bs-slide="prev" >
     <span class="carousel-control-prev-icon"></span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarouselVj" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
@@ -107,8 +120,9 @@
 
   <section id="Merch" style= "padding: 30px;">
     <h2>Merch</h2>
-    <p>Mercancía oficial de la saga...</p>
-     <div id="catalogoCarousel" class="carousel slide" data-bs-ride="carousel">
+    <p class="semitransparente"> Mercancía oficial de la saga...</p>
+
+    <div id="catalogoCarouselMerch" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
 
     <div class="carousel-item active">
@@ -119,7 +133,7 @@
             <div class="card-body">
               <h5 class="card-title">Polera Dmc2</h5>
               <p class="card-text">Tallas S/M/L/XL.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $29.99</small>
@@ -133,7 +147,7 @@
             <div class="card-body">
               <h5 class="card-title">Polera Nero (5)</h5>
               <p class="card-text">Tallas M/L/XL.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $29.99</small>
@@ -147,8 +161,7 @@
             <div class="card-body">
               <h5 class="card-title">Dante Fig Asmus Toys</h5>
               <p class="card-text">Figura 31 cm.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
-            </div>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>            </div>
             <div class="card-footer">
               <small class="text">Precio: $419.99</small>
             </div>
@@ -158,10 +171,10 @@
     </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="prev" >
+  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarouselMerch" data-bs-slide="prev" >
     <span class="carousel-control-prev-icon"></span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarouselMerch" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
@@ -173,9 +186,9 @@
 
   <section id="Art" style="padding: 30px;">
     <h2>Arte Oficial</h2>
-    <p>Visual Arts y otros artes conceptuales de la franquicia...</p>
+    <p class="semitransparente">Visual Arts y otros artes conceptuales de la franquicia...</p>
 
-       <div id="catalogoCarousel" class="carousel slide" data-bs-ride="carousel">
+       <div id="catalogoCarouselArt" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
 
     <div class="carousel-item active">
@@ -186,7 +199,7 @@
             <div class="card-body">
               <h5 class="card-title">Dmc 5 ArtBook</h5>
               <p class="card-text">Artes conceptuales de la 5ta entrega.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $49.99</small>
@@ -200,7 +213,7 @@
             <div class="card-body">
               <h5 class="card-title">Dmc Graphic Arts</h5>
               <p class="card-text">Arte de toda la saga.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $59.99</small>
@@ -214,7 +227,7 @@
             <div class="card-body">
               <h5 class="card-title">DmC Visual Arts</h5>
               <p class="card-text">Arte del reboot.</p>
-              <a href="#" class="btn btn-danger">Comprar</a>
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</a>
             </div>
             <div class="card-footer">
               <small class="text">Precio: $39.99</small>
@@ -225,10 +238,10 @@
     </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="prev" >
+  <button class="carousel-control-prev" type="button" data-bs-target="#catalogoCarouselArt" data-bs-slide="prev" >
     <span class="carousel-control-prev-icon"></span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#catalogoCarouselArt" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
@@ -236,7 +249,8 @@
 
   </section>
 
- <section id="Inf" style="padding: 30px; color: white; font-weight: bold; font-size: 1.3rem ;">
+ <section id="Inf" style="padding: 30px;">
+  <div class="info-bg">
     <h2>Información</h2>
     <p>DMCMania Es una subpágina de CAPCOM destinada a la franquicia de DMC y el incentivo de la saga a través de Mercancía
       Todas las compras realizadas poseen envíos en un 70% de países del mundo
@@ -248,8 +262,60 @@
 
     <img src="Capcom_logo.png" alt="Logo Capcom" class="capcom-logo">
 
+<div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="comprarModalLabel">Comprar producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+    
+          <div class="mb-4 text-center">
+            <span style="font-size: 2rem; margin: 0 10px; color:#003087;">
+              <i class="fab fa-cc-paypal"></i>
+            </span>
+            <span style="font-size: 2rem; margin: 0 10px; color:#1a1f71;">
+              <i class="fab fa-cc-visa"></i>
+            </span>
+            <span style="font-size: 2rem; margin: 0 10px; color:#eb001b;">
+              <i class="fab fa-cc-mastercard"></i>
+            </span>
+            <span style="font-size: 2rem; margin: 0 10px; color:#ff9900;">
+              <i class="fab fa-cc-amazon-pay"></i>
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre en la tarjeta</label>
+            <input type="text" class="form-control" id="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="numero" class="form-label">Número de tarjeta</label>
+            <input type="text" class="form-control" id="numero" maxlength="16" required>
+          </div>
+          <div class="mb-3">
+            <label for="expira" class="form-label">Fecha de expiración</label>
+            <input type="text" class="form-control" id="expira" placeholder="MM/AA" required>
+          </div>
+          <div class="mb-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="password" class="form-control" id="cvv" maxlength="4" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Pagar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 </body>
+
+
 <footer class="footer">
   <div class="footer-content">
     <img src="Capcom_logo.png" alt="Capcom Logo" class="footer-logo">
