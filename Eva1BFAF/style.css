@@ -1,0 +1,39 @@
+body{
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.nav-link {
+  color: red !important;
+}
+
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 0;
+}
+
+.nav {
+  background-color: rgba(172, 1, 1, 0.8); /* casi negro con un tinte rojo */
+  padding: 12px 24px;
+  margin-bottom: 40px;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+  font-weight: 900 !important;
+  color: #d9d9d9 !important;  /* blanco puro para contraste */
+  transition: color 0.2s ease;
+}
+.nav-link.active {
+  color: #ff2e2e !important; /* rojo para la sección activa */
+}
+
+.nav-link:hover {
+  color: #ff2e2e !important;  /* rojo al pasar el mouse */
+}
