@@ -1,39 +1,43 @@
-body{
-    background-image: url('fondo.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+body {
+  background-image: url('fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #000; 
+  padding-top: 90px; 
+  overflow: hidden;
+
 }
+
 .nav-link {
   color: red !important;
 }
 
+.navbar-logo {
+  height: 50px; 
+  width: auto;
+}
 .custom-navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(172, 1, 1, 0.8);
+  backdrop-filter: blur(6px); 
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 10px 0;
-}
-
-.nav {
-  background-color: rgba(172, 1, 1, 0.8); /* casi negro con un tinte rojo */
-  padding: 12px 24px;
-  margin-bottom: 40px;
 }
 
 .nav-link {
   font-size: 1.3rem;
   font-weight: 900 !important;
-  color: #d9d9d9 !important;  /* blanco puro para contraste */
+  color: #d9d9d9 !important;  
   transition: color 0.2s ease;
 }
 .nav-link.active {
-  color: #ff2e2e !important; /* rojo para la sección activa */
+  color: #ff2e2e !important; 
 }
 
 .nav-link:hover {
-  color: #ff2e2e !important;  /* rojo al pasar el mouse */
+  color: #ff2e2e !important; 
 }
