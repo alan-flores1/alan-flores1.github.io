@@ -5,8 +5,6 @@ body {
   background-attachment: fixed;
   background-color: #000; 
   padding-top: 90px; 
-  overflow: hidden;
-
 }
 
 .nav-link {
@@ -40,4 +38,14 @@ body {
 
 .nav-link:hover {
   color: #ff2e2e !important; 
+}
+.card form {
+  font-size: 0.85rem;
+}
+.form-label {
+  font-size: 0.75rem;  
+}
+
+.form-control {
+  font-size: 0.65rem;   
 }
