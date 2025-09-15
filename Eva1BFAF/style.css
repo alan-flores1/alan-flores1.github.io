@@ -11,6 +11,12 @@ body {
   height: 50px; 
   width: auto;
 }
+
+
+.nav-link {
+  color: red !important;
+}
+
 .custom-navbar {
   position: fixed;
   top: 0;
@@ -27,8 +33,6 @@ body {
   font-weight: 900 !important;
   color: #d9d9d9 !important;  
   transition: color 0.2s ease;
-  color: red !important;
-
 }
 
 .nav-link.active {
