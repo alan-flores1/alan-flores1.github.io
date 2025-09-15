@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Productos</h1>
+
+  <!-- Cada producto tiene su botón de detalle -->
+  <div class="producto">
+
+    <h3>CD Rock</h3>
+
+    <p>$10000</p>
+    <button onclick="agregarCarrito('CD Rock', 10000)">Agregar al carrito</button>
+    <button onclick="verDetalle(1)">Ver detalle</button>
+  </div>
+
+  <div class="producto">
+    <h3>Vinilo Jazz</h3>
+    <p>$15000</p>
+    <button onclick="agregarCarrito('Vinilo Jazz', 15000)">Agregar al carrito</button>
+    <button onclick="verDetalle(2)">Ver detalle</button>
+  </div>
+
+  <div class="producto">
+    <h3>CD Pop</h3>
+    <p>$12000</p>
+    <button onclick="agregarCarrito('CD Pop', 12000)">Agregar al carrito</button>
+    <button onclick="verDetalle(3)">Ver detalle</button>
+  </div>
+
+  <div class="producto">
+    <h3>Vinilo Indie</h3>
+    <p>$14000</p>
+    <button onclick="agregarCarrito('Vinilo Indie', 14000)">Agregar al carrito</button>
+    <button onclick="verDetalle(4)">Ver detalle</button>
+  </div>
+
+  <p><a href="carrito.html">🛒 Ir al carrito</a></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
