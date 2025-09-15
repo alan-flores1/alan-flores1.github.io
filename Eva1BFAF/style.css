@@ -32,9 +32,13 @@ body {
   color: #d9d9d9 !important;  
   transition: color 0.2s ease;
 }
+
 .nav-link.active {
-  color: #ff2e2e !important; 
+  color: #ffffff !important;           /* blanco puro */
+  font-weight: 900;                    /* más grueso */
+  transform: scale(1.13);              /* un poquito más grande */
 }
+
 
 .nav-link:hover {
   color: #ff2e2e !important; 
@@ -48,4 +52,21 @@ body {
 
 .form-control {
   font-size: 0.65rem;   
+
+}
+
+.btn.btn-primary.w-100 {
+  background-color: #d32f2f !important; /* un poco más claro */
+  border-color: #d32f2f !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.btn.btn-primary.w-100:hover {
+  background-color: #b71c1c !important; /* contraste al pasar el mouse */
+  border-color: #b71c1c !important;
+}
+
+.form-check-input:checked {
+  background-color: #d32f2f !important;
+  border-color: #d32f2f !important;
 }

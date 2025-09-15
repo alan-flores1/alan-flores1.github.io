@@ -10,7 +10,7 @@
 </head>
 <body>
        <nav class="custom-navbar d-flex align-items-center">
-    <a href="#" class="me-3">
+        <a href="#" class="me-3">
         <img src="Icono.png" alt="Logo" class="navbar-logo">
     </a>
     <ul class="nav">
@@ -29,11 +29,18 @@
         <li class="nav-item">
         <a class="nav-link" href="#Cont">Contacto</a>
         </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#Cuenta">Registrarse</a>
+        </li>
     </ul>
     </nav>
     <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow" style="width: 500px;">
-        <h3 class="text-center mb-3">Iniciar sesión</h3>
+         <div class="text-center mb-4">
+        <img src="Icono.png" alt="Logo" class="mb-2" style="height:60px;">
+        <h4 class="fw-bold">Empresa</h4>
+        </div>
+        <!---<h3 class="text-center mb-3">Iniciar sesión</h3>--->
 
         <form>
         <div class="mb-3">
@@ -44,6 +51,16 @@
         <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="recordarme">
+          <label class="form-check-label" for="recordarme"> Recordarme
+          </label>
+        </div>
+
+        <a href="#" class="text-decoration-none forgot-link">¿Olvidaste tu contraseña?</a>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
