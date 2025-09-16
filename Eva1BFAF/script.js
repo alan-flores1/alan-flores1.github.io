@@ -123,3 +123,84 @@ function mostrarCarrito() {
   // Muestra el total al final
   document.getElementById("carrito-total").textContent = "Total: $" + total;
 }
+// -------------------------
+// REGISTRO DE USUARIO
+// -------------------------
+const formRegistro = document.querySelector("#formRegistro");
+if (formRegistro) {
+  formRegistro.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmar = document.getElementById("confirmar").value.trim();
+
+    // Validación correo
+    const emailRegex = /^[^\s@]+@(duoc.cl|profesor.duoc.cl|gmail.com)$/;
+    if (!emailRegex.test(email)) {
+      alert("El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com");
+      return; // Detiene aquí
+    }
+
+    // Validación contraseña
+    if (password.length < 4 || password.length > 10) {
+      alert("La contraseña debe tener entre 4 y 10 caracteres");
+      return; // Detiene aquí
+    }
+
+    if (password !== confirmar) {
+      alert("Las contraseñas no coinciden");
+      return; // Detiene aquí
+    }
+
+    // Si todo bien, guardamos
+    const usuario = { nombre, email, password };
+    localStorage.setItem("usuarioRegistrado", JSON.stringify(usuario));
+
+    alert("Registro exitoso. Ahora puedes iniciar sesión.");
+    window.location.href = "Sesion.html";
+  });
+}
+// -------------------------
+// INICIO DE SESIÓN
+// -------------------------
+const formLogin = document.querySelector("#formLogin");
+if (formLogin) {
+  formLogin.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Validación correo
+    const emailRegex = /^[^\s@]+@(duoc.cl|profesor.duoc.cl|gmail.com)$/;
+    if (!emailRegex.test(email)) {
+      alert("El correo debe ser de dominio @duoc.cl, @profesor.duoc.cl o @gmail.com");
+      return; // Detiene aquí
+    }
+
+    // Validación contraseña
+    if (password.length < 4 || password.length > 10) {
+      alert("La contraseña debe tener entre 4 y 10 caracteres");
+      return; // Detiene aquí
+    }
+
+    // Recuperar usuario registrado
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuarioRegistrado"));
+    if (!usuarioGuardado) {
+      alert("No hay usuarios registrados");
+      return; // Detiene aquí
+    }
+
+    // Comparar credenciales
+    if (usuarioGuardado.email === email && usuarioGuardado.password === password) {
+      alert("Inicio de sesión exitoso");
+      localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioGuardado));
+      window.location.href = "index.html"; 
+    } else {
+      alert("Correo o contraseña incorrectos");
+      return; // Muy importante detener aquí
+    }
+  });
+}
