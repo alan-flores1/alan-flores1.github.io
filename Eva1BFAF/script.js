@@ -1,77 +1,125 @@
-// Información de productos
+// Lista de productos disponibles en la tienda
 const productos = [
-  { id: 1, nombre: "CD Rock", precio: 10000, descripcion: "Clásicos del rock para toda ocasión", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 2, nombre: "Vinilo Jazz", precio: 15000, descripcion: "Vinilo con lo mejor del jazz", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 3, nombre: "CD Pop", precio: 12000, descripcion: "Éxitos modernos del pop", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 4, nombre: "Vinilo Indie", precio: 14000, descripcion: "Sonidos indie en vinilo", imagen: "Disco_de_Vinilo.jpg" }
+  { id: 1, nombre: "CD Rock", precio: 10000, descripcion: "Clásicos del rock", imagen: "Disco_de_Vinilo.jpg" },
+  { id: 2, nombre: "Vinilo Jazz", precio: 15000, descripcion: "Vinilo de jazz clásico", imagen: "Disco_de_Vinilo.jpg" },
+  { id: 3, nombre: "CD Pop", precio: 12000, descripcion: "Hits modernos del pop", imagen: "Disco_de_Vinilo.jpg" },
+  { id: 4, nombre: "Vinilo Indie", precio: 14000, descripcion: "Sonidos indie auténticos", imagen: "Disco_de_Vinilo.jpg" }
 ];
 
-// Guardar en carrito
+// Función para agregar un producto al carrito
 function agregarCarrito(nombre, precio) {
+  // Recupera el carrito del localStorage (si no existe, lo crea vacío [])
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Agrega un objeto con nombre y precio al carrito
   carrito.push({ nombre, precio });
+
+  // Guarda el carrito actualizado en localStorage
   localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Mensaje de confirmación
   alert(nombre + " añadido al carrito");
 }
 
-// Mostrar carrito
-function mostrarCarrito() {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  let lista = document.getElementById("lista-carrito");
-  let total = 0;
-  lista.innerHTML = "";
+// Función para mostrar los productos en la página productos.html
+function mostrarProductos() {
+  let cont = document.getElementById("productos-lista"); // Contenedor donde van los productos
 
-  carrito.forEach((item, i) => {
-    let li = document.createElement("li");
-    li.textContent = item.nombre + " - $" + item.precio;
-    let btn = document.createElement("button");
-    btn.textContent = "Eliminar";
-    btn.onclick = () => {
-      carrito.splice(i, 1);
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      mostrarCarrito();
-    };
-    li.appendChild(btn);
-    lista.appendChild(li);
-    total += item.precio;
+  // Recorre la lista de productos y los dibuja en la página
+  productos.forEach(p => {
+    let div = document.createElement("div");
+    div.className = "col-md-3 producto-card"; // Bootstrap: 4 columnas por fila
+    div.innerHTML = `
+      <h3>${p.nombre}</h3>
+      <p>$${p.precio}</p>
+      <p>${p.descripcion}</p>
+      <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
+      <!-- Botón para agregar directamente al carrito -->
+      <button class="btn btn-success btn-sm" onclick="agregarCarrito('${p.nombre}', ${p.precio})">Agregar</button>
+      <!-- Botón que envía al detalle del producto -->
+      <button class="btn btn-info btn-sm" onclick="verDetalle(${p.id})">Ver detalle</button>
+    `;
+    cont.appendChild(div);
   });
-
-  document.getElementById("carrito-total").textContent = "Total: $" + total;
 }
 
-// Ir al detalle
+// Función que redirige a la página de detalle con el id del producto
 function verDetalle(id) {
+  // Cambia la URL a detalle.html?id=ID_PRODUCTO
   window.location.href = "detalle.html?id=" + id;
 }
 
-// Mostrar detalle de un producto
+// Función para mostrar la información del producto en detalle.html
 function mostrarDetalle() {
+  // Lee el parámetro "id" desde la URL (ej: detalle.html?id=2)
   let params = new URLSearchParams(window.location.search);
   let id = parseInt(params.get("id"));
+
+  // Busca el producto con ese id
   let p = productos.find(x => x.id === id);
 
-  // Contenedor principal
+  // Contenedor principal del detalle
   let cont = document.getElementById("detalle-producto");
   cont.innerHTML = `
-    <h2>${p.nombre}</h2>
-    <p>${p.descripcion}</p>
-    <img src="${p.imagen}" alt="${p.nombre}" style="max-width:300px; display:block; margin:15px 0;">
-    <p>Precio: $${p.precio}</p>
-    <button onclick="agregarCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
+    <div class="card p-4 bg-light">
+      <h2>${p.nombre}</h2>
+      
+      <p>${p.descripcion}</p>
+      <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
+      <p>Precio: $${p.precio}</p>
+      <button class="btn btn-success" onclick="agregarCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
+    </div>
   `;
 
-  // Otros productos
+  // Mostrar otros productos abajo en "detalle.html"
   let otros = document.getElementById("otros-productos");
-  otros.innerHTML = "";
-  productos
-    .filter(prod => prod.id !== id) // quitar el actual
-    .forEach(prod => {
-      let div = document.createElement("div");
-      div.innerHTML = `
-        <h4>${prod.nombre}</h4>
-        <p>$${prod.precio}</p>
-        <button onclick="verDetalle(${prod.id})">Ver detalle</button>
-      `;
-      otros.appendChild(div);
-    });
+  productos.filter(prod => prod.id !== id).forEach(prod => {
+    let div = document.createElement("div");
+    div.className = "col-md-3 producto-card";
+    div.innerHTML = `
+      <h4>${prod.nombre}</h4>
+      <p>$${prod.precio}</p>
+      <button class="btn btn-info btn-sm" onclick="verDetalle(${prod.id})">Ver detalle</button>
+    `;
+    otros.appendChild(div);
+  });
+}
+
+// Función para mostrar los productos del carrito en carrito.html
+function mostrarCarrito() {
+  // Recupera el carrito desde localStorage
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  let lista = document.getElementById("lista-carrito"); // Lista de productos en carrito.html
+  let total = 0;
+  lista.innerHTML = ""; // Limpia el contenido antes de mostrarlo
+
+  // Recorre cada producto del carrito
+  carrito.forEach((item, i) => {
+    let li = document.createElement("li");
+    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.innerHTML = `${item.nombre} - $${item.precio}`;
+
+    // Botón para eliminar producto del carrito
+    let btn = document.createElement("button");
+    btn.className = "btn btn-danger btn-sm";
+    btn.textContent = "Eliminar";
+
+    // Cuando se hace clic, se elimina este producto del array
+    btn.onclick = () => {
+      carrito.splice(i, 1); // elimina en la posición i
+      localStorage.setItem("carrito", JSON.stringify(carrito)); // guarda el nuevo carrito
+      mostrarCarrito(); // vuelve a actualizar la lista en pantalla
+    };
+
+    // Añade el botón al <li>
+    li.appendChild(btn);
+    lista.appendChild(li);
+
+    // Acumula el precio en el total
+    total += item.precio;
+  });
+
+  // Muestra el total al final
+  document.getElementById("carrito-total").textContent = "Total: $" + total;
 }
