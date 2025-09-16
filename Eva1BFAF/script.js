@@ -7,18 +7,26 @@ const productos = [
 ];
 
 // Función para agregar un producto al carrito
-function agregarCarrito(nombre, precio) {
-  // Recupera el carrito del localStorage (si no existe, lo crea vacío [])
+function agregarCarrito(id, cantidad = 1) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Agrega un objeto con nombre y precio al carrito
-  carrito.push({ nombre, precio });
+  // Buscar el producto en la lista de productos
+  let producto = productos.find(p => p.id === id);
+  if (!producto) {
+    alert("Error: producto no encontrado");
+    return;
+  }
 
-  // Guarda el carrito actualizado en localStorage
+  // Buscar si ya está en el carrito
+  let existente = carrito.find(item => item.id === id);
+  if (existente) {
+    existente.cantidad += cantidad; // aumenta cantidad
+  } else {
+    carrito.push({ ...producto, cantidad }); // agrega nuevo
+  }
+
   localStorage.setItem("carrito", JSON.stringify(carrito));
-
-  // Mensaje de confirmación
-  alert(nombre + " añadido al carrito");
+  alert(`${producto.nombre} (x${cantidad}) añadido al carrito ✅`);
 }
 
 // Función para mostrar los productos en la página productos.html
@@ -35,9 +43,10 @@ function mostrarProductos() {
       <p>${p.descripcion}</p>
       <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
       <!-- Botón para agregar directamente al carrito -->
-      <button class="btn btn-success btn-sm" onclick="agregarCarrito('${p.nombre}', ${p.precio})">Agregar</button>
+      <button class="btn btn-success btn-sm" onclick="agregarCarrito(${p.id})">Agregar</button>
       <!-- Botón que envía al detalle del producto -->
       <button class="btn btn-info btn-sm" onclick="verDetalle(${p.id})">Ver detalle</button>
+      
     `;
     cont.appendChild(div);
   });
@@ -51,78 +60,87 @@ function verDetalle(id) {
 
 // Función para mostrar la información del producto en detalle.html
 function mostrarDetalle() {
-  // Lee el parámetro "id" desde la URL (ej: detalle.html?id=2)
   let params = new URLSearchParams(window.location.search);
   let id = parseInt(params.get("id"));
-
-  // Busca el producto con ese id
   let p = productos.find(x => x.id === id);
 
-  // Contenedor principal del detalle
   let cont = document.getElementById("detalle-producto");
   cont.innerHTML = `
-    <div class="card p-4 bg-light">
+    <div class="card p-4 bg-light text-dark">
       <h2>${p.nombre}</h2>
-      
       <p>${p.descripcion}</p>
       <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
       <p>Precio: $${p.precio}</p>
-      <button class="btn btn-success" onclick="agregarCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
+
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary btn-sm" id="btnMenos">-</button>
+        <span id="cantidadProducto" class="mx-3">1</span>
+        <button class="btn btn-outline-secondary btn-sm" id="btnMas">+</button>
+      </div>
+
+      <button class="btn btn-success" id="btnAgregar">Agregar al carrito</button>
     </div>
   `;
+  let cantidad = 1;
+  document.getElementById("btnMenos").onclick = () => {
+    if (cantidad > 1) cantidad--;
+    document.getElementById("cantidadProducto").textContent = cantidad;
+  };
+  document.getElementById("btnMas").onclick = () => {
+    cantidad++;
+    document.getElementById("cantidadProducto").textContent = cantidad;
+  };
 
-  // Mostrar otros productos abajo en "detalle.html"
-  let otros = document.getElementById("otros-productos");
-  productos.filter(prod => prod.id !== id).forEach(prod => {
-    let div = document.createElement("div");
-    div.className = "col-md-3 producto-card";
-    div.innerHTML = `
-      <h4>${prod.nombre}</h4>
-      <p>$${prod.precio}</p>
-      <button class="btn btn-info btn-sm" onclick="verDetalle(${prod.id})">Ver detalle</button>
-    `;
-    otros.appendChild(div);
-  });
+  // Agregar al carrito
+  document.getElementById("btnAgregar").onclick = () => {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push({ ...p, cantidad });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert(`${p.nombre} (x${cantidad}) añadido al carrito ✅`);
+  };
 }
 
 // Función para mostrar los productos del carrito en carrito.html
 function mostrarCarrito() {
-  // Recupera el carrito desde localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  let lista = document.getElementById("lista-carrito"); // Lista de productos en carrito.html
+  let lista = document.getElementById("lista-carrito");
   let total = 0;
-  lista.innerHTML = ""; // Limpia el contenido antes de mostrarlo
+  lista.innerHTML = "";
 
-  // Recorre cada producto del carrito
   carrito.forEach((item, i) => {
     let li = document.createElement("li");
     li.className = "list-group-item d-flex justify-content-between align-items-center";
-    li.innerHTML = `${item.nombre} - $${item.precio}`;
 
-    // Botón para eliminar producto del carrito
+    li.innerHTML = `
+      <div class="d-flex align-items-center">
+        <img src="${item.imagen}" alt="${item.nombre}" style="width:50px; height:50px; object-fit:cover; margin-right:10px;">
+        <div>
+          <strong>${item.nombre}</strong><br>
+          Cantidad: ${item.cantidad} | Precio: $${item.precio}
+        </div>
+      </div>
+    `;
+
+    // Botón para eliminar
     let btn = document.createElement("button");
     btn.className = "btn btn-danger btn-sm";
     btn.textContent = "Eliminar";
-
-    // Cuando se hace clic, se elimina este producto del array
     btn.onclick = () => {
-      carrito.splice(i, 1); // elimina en la posición i
-      localStorage.setItem("carrito", JSON.stringify(carrito)); // guarda el nuevo carrito
-      mostrarCarrito(); // vuelve a actualizar la lista en pantalla
+      carrito.splice(i, 1);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarCarrito();
     };
 
-    // Añade el botón al <li>
     li.appendChild(btn);
     lista.appendChild(li);
 
-    // Acumula el precio en el total
-    total += item.precio;
+    total += item.precio * item.cantidad;
   });
 
-  // Muestra el total al final
   document.getElementById("carrito-total").textContent = "Total: $" + total;
 }
+
+
 // -------------------------
 // REGISTRO DE USUARIO
 // -------------------------
@@ -137,7 +155,7 @@ if (formRegistro) {
     const confirmar = document.getElementById("confirmar").value.trim();
 
     // Validación correo
-    const emailRegex = /^[^\s@]+@(duoc.cl|profesor.duoc.cl|gmail.com)$/;
+    const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
     if (!emailRegex.test(email)) {
       alert("El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com");
       return; // Detiene aquí
@@ -174,7 +192,7 @@ if (formLogin) {
     const password = document.getElementById("password").value.trim();
 
     // Validación correo
-    const emailRegex = /^[^\s@]+@(duoc.cl|profesor.duoc.cl|gmail.com)$/;
+    const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
     if (!emailRegex.test(email)) {
       alert("El correo debe ser de dominio @duoc.cl, @profesor.duoc.cl o @gmail.com");
       return; // Detiene aquí
@@ -204,3 +222,37 @@ if (formLogin) {
     }
   });
 }
+
+// -------------------------
+// MOSTRAR AVATAR EN NAVBAR
+// -------------------------
+window.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  const nav = document.querySelector(".navbar-nav.ms-auto"); // ul de la derecha
+
+  if (usuarioLogueado && nav) {
+    const loginLink = nav.querySelector('a[href="Sesion.html"]');
+    if (loginLink) {
+      loginLink.parentElement.remove();
+    }
+
+    // Crear avatar + cerrar sesión
+    const li = document.createElement("li");
+    li.className = "nav-item d-flex align-items-center ms-3";
+
+    li.innerHTML = `
+      <img src="usuario.png" alt="avatar" 
+           style="height:40px; width:40px; border-radius:50%; border:2px solid #fff; margin-right:8px;">
+      <button id="btnLogout" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
+    `;
+
+    nav.appendChild(li);
+
+    // Evento para cerrar sesión
+    document.getElementById("btnLogout").addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      alert("Sesión cerrada");
+      window.location.href = "index.html"; // vuelve al home
+    });
+  }
+});
