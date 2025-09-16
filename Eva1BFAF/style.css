@@ -1,106 +1,150 @@
-body {
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-color: #000; 
-  padding-top: 90px; 
+
+
+.dogcat, .carrito {
+  filter: brightness(0) invert(1);
 }
 
-.navbar-logo {
-  height: 50px; 
-  width: auto;
+.carousel-item img {
+  height: 500px;      
+  object-fit: cover;   
+  object-position: center; 
 }
 
-
-.nav-link {
-  color: red !important;
+.footer {
+  background-color: #28242c ; 
+  color: #fff;            
+  padding: 50px 20px 20px;
+  font-family: Arial, sans-serif;
 }
 
-.custom-navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(172, 1, 1, 0.8);
-  backdrop-filter: blur(6px); 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 10px 0;
-}
-
-.nav-link {
-  font-size: 1.3rem;
-  font-weight: 900 !important;
-  color: #d9d9d9 !important;  
-  transition: color 0.2s ease;
-}
-
-.nav-link.active {
-  color: #ffffff !important;           /* blanco puro */
-  font-weight: 900;                    /* más grueso */
-  transform: scale(1.13);              /* un poquito más grande */
-}
-
-
-.nav-link:hover {
-  color: #ff2e2e !important; 
-}
-.card form {
-  font-size: 0.85rem;
-}
-.form-label {
-  font-size: 0.75rem;  
-}
-
-.form-control {
-  font-size: 0.65rem;   
-
-}
-
-.btn.btn-primary.w-100 {
-  background-color: #d32f2f !important; /* un poco más claro */
-  border-color: #d32f2f !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-}
-
-.btn.btn-primary.w-100:hover {
-  background-color: #b71c1c !important; /* contraste al pasar el mouse */
-  border-color: #b71c1c !important;
-}
-
-.form-check-input:checked {
-  background-color: #d32f2f !important;
-  border-color: #d32f2f !important;
-}
-
-.producto {
-  border: 1px solid #ccc;
-   padding: 10px;
-    margin: 10px;
-     width: 200px;
-}
-
-.button {
-  padding: 6px 10px;
-  margin-top: 5px; 
-  cursor: pointer; 
-}
-
-#detalle-producto {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 20px;
-  background: #f9f9f9;
-}
-
-#otros-productos {
+.footer .container {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
 }
 
-#otros-productos div {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 150px;
-  text-align: center;
+.footer-col {
+  flex: 1;
+  min-width: 200px;
 }
+
+.footer-col h2.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-col h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.footer-col p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #aaa; 
+}
+
+.socials a {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  color: #aaa;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+
+
+section.about {
+    margin: 60px 0; 
+    padding: 0 40px; 
+}
+
+section.about h2 {
+    margin-bottom: 30px;
+}
+
+section.about p {
+    margin-bottom: 25px; 
+    line-height: 1.8; 
+}
+
+footer.footer {
+    margin-top: 60px; 
+    padding: 40px 20px;
+    background-color: #111;
+}
+
+footer.footer .footer-col {
+    margin-bottom: 30px;
+}
+
+footer.footer .copyright {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.carrito {
+    margin-left: 10px;
+}
+
+
+.compact-card {
+  width: 240px;       /* ancho más pequeño */
+  height: 400px;      /* alto más pequeño */
+  overflow: hidden;
+}
+
+.compact-card .card-img-top {
+  height: 200px;       /* imagen más pequeña */
+  object-fit: cover;
+}
+
 

@@ -3,48 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eva1</title>
+    <title>Contacto</title>
     <link rel = "stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/Icono.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="bg-black text-white">
     
-     <nav class="custom-navbar d-flex align-items-center">
-    <a href="#" class="me-3">
-        <img src="Icono.png" alt="Logo" class="navbar-logo">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="Icono.png" alt="Logo" width="30" height="24" 
+           class="d-inline-block align-text-top me-2">
     </a>
-    <ul class="nav">
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link" href="#Home">Home</a>
+          <a class="nav-link " aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="productos.html">Productos</a>
+          <a class="nav-link" href="productos.html">Productos</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#Nos">Nosotros</a>
+          <a class="nav-link" href="nosotros.html">Nosotros</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog</a>
+        </li>
+                </li>
+                <li class="nav-item">
+          <a class="nav-link active" href="contacto.html">Contacto</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="sesion.html">Inicio de sesión</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#Blg">Blogs</a>
+<a class="nav-link p-0" href="#">
+  <img src="carrito.png" alt="Carrito" width="30" height="30" class="carrito">
+</a>
+
         </li>
-        <li class="nav-item">
-        <a class="nav-link active" href="Contacto.html">Contacto</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="Registro.html">Registrarse</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link " href="Sesion.html">Iniciar Sesión</a>
-        </li>
-    </ul>
-    </nav>
+      </ul>
+
+    </div>
+  </div>
+</nav>
 
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="bg-white p-4 shadow rounded contact-card">
+    <div class="bg-dark p-4 shadow rounded contact-card">
         <img src="Icono.png" alt="Logo" class="mb-2" style="height:60px;">
     
-    <!-- Título -->
     <h1 class="fw-bold mb-3">Contáctanos</h1>
     <p>
      ¿Tienes algún problema con la página? ¿Errores en los pagos? contáctate con nosotros
@@ -118,6 +135,47 @@
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-col">
+      <h2 class="logo">Tienda</h2>
+      <p>Tienda enfocada en conectar a las personas con la música. Vinilos, CDs, Blurays y objetos para melómanos.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <p>📧 contacto@tienda.cl</p>
+      <p>📞 +56 2 2222 3333</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Síguenos</h3>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2025 Tienda. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
