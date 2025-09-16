@@ -10,35 +10,46 @@
 </head>
 
 <body class="bg-black text-white">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 
-    <nav class="custom-navbar d-flex align-items-center">
-    <a href="#" class="me-3">
-        <img src="Icono.png" alt="Logo" class="navbar-logo">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="Icono.png" alt="Logo" width="30" height="24" 
+           class="d-inline-block align-text-top me-2">
     </a>
-    <ul class="nav">
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link" href="#Home">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="productos.html">Productos</a>
+          <a class="nav-link" href="productos.html">Productos</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#Nos">Nosotros</a>
+          <a class="nav-link" href="nosotros.html">Nosotros</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="Sesion.html">Inicio de sesión</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#Blg">Blogs</a>
+      <a class="nav-link p-0" href="carrito.html">
+        <img src="carrito.png" alt="Carrito" width="30" height="30" class="carrito">
+      </a>
+
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="contacto.html">Contacto</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link active" href="registro.html">Registrarse</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link " href="sesion.html">Iniciar Sesión</a>
-        </li>
-    </ul>
-    </nav>
+      </ul>
+
+    </div>
+  
+</nav>
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow" style="width: 500px;">
