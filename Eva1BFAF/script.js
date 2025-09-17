@@ -3,33 +3,34 @@
 // -------------------------
 const productos = [
   // Vinilos (8 productos)
-  { id: 1, nombre: "Vinilo Luis Miguel", precio: 80000, categoria: "Vinilos", imagen: "productos/vinilos/viniloluismi.jpeg" },
-  { id: 2, nombre: "Los Prisioneros", precio: 150000, categoria: "Vinilos", imagen: "productos/vinilos/viniloprisioneros.jpeg" },
-  { id: 3, nombre: "Vinilo Queen", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/viniloqueen.jpeg" },
-  { id: 4, nombre: "Vinilo Beethoven", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/beethoven.png" },
-  { id: 5, nombre: "Vinilo Green Day", precio: 70000, categoria: "Vinilos", imagen: "productos/vinilos/greenday.png" },
-  { id: 6, nombre: "Vinilo Artic Monkey", precio: 75000, categoria: "Vinilos", imagen: "productos/vinilos/articmonkey.png" },
-  { id: 7, nombre: "Vinilo Pearl Jam Ten", precio: 65000, categoria: "Vinilos", imagen: "productos/vinilos/pearljam.png" },
-  { id: 8, nombre: "Vinilo Doja Cat / Planet Her", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/dojacat.png" },
+  { id: 1, nombre: "Vinilo Luis Miguel", precio: 80000, categoria: "Vinilos", imagen: "productos/vinilos/viniloluismi.jpeg", descripcion: "El clásico de Luis Miguel en vinilo, ideal para los nostálgicos del pop latino." },
+  { id: 2, nombre: "Los Prisioneros", precio: 150000, categoria: "Vinilos", imagen: "productos/vinilos/viniloprisioneros.jpeg", descripcion: "La banda chilena que marcó a toda una generación, ahora en formato vinilo para coleccionistas." },
+  { id: 3, nombre: "Vinilo Queen", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/viniloqueen.jpeg", descripcion: "El legado de Freddie Mercury y Queen en vinilo, un imprescindible del rock clásico." },
+  { id: 4, nombre: "Vinilo Beethoven", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/beethoven.png", descripcion: "Obras maestras de Beethoven en vinilo, ideal para los amantes de la música clásica." },
+  { id: 5, nombre: "Vinilo Green Day", precio: 70000, categoria: "Vinilos", imagen: "productos/vinilos/greenday.png", descripcion: "Los éxitos de Green Day en formato vinilo, perfectos para los fanáticos del punk rock." },
+  { id: 6, nombre: "Vinilo Artic Monkey", precio: 75000, categoria: "Vinilos", imagen: "productos/vinilos/articmonkey.png", descripcion: "El sonido alternativo de Arctic Monkeys en vinilo, ideal para coleccionistas modernos." },
+  { id: 7, nombre: "Vinilo Pearl Jam Ten", precio: 65000, categoria: "Vinilos", imagen: "productos/vinilos/pearljam.png", descripcion: "El icónico álbum 'Ten' de Pearl Jam en vinilo, un clásico del grunge de los 90." },
+  { id: 8, nombre: "Vinilo Doja Cat / Planet Her", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/dojacat.png", descripcion: "El aclamado 'Planet Her' de Doja Cat en vinilo, con un estilo pop moderno y fresco." },
 
   // CDs (8 productos)
-  { id: 9, nombre: "CD Bruno Mars / Doo-Wops", precio: 50000, categoria: "CDs", imagen: "productos/cd/bruno.png" },
-  { id: 10, nombre: "CD Bob Marley", precio: 60000, categoria: "CDs", imagen: "productos/cd/bob.png" },
-  { id: 11, nombre: "CD Benson Boone / American Heart", precio: 300000, categoria: "CDs", imagen: "productos/cd/benson.png" },
-  { id: 12, nombre: "CD Olivia Rodrigo / Sour", precio: 300000, categoria: "CDs", imagen: "productos/cd/olivia.png" },
-  { id: 13, nombre: "CD Kendrick Lamar", precio: 70000, categoria: "CDs", imagen: "productos/cd/kendric.png" },
-  { id: 14, nombre: "CD Dua Lipa / Radical", precio: 75000, categoria: "CDs", imagen: "productos/cd/dualipa.png" },
-  { id: 15, nombre: "CD Los Bunkers", precio: 300000, categoria: "CDs", imagen: "productos/cd/bunkers.png" },
-  { id: 16, nombre: "CD Gorillaz / Demon Days", precio: 300000, categoria: "CDs", imagen: "productos/cd/gorilaz.png" },
+  { id: 9, nombre: "CD Bruno Mars / Doo-Wops", precio: 50000, categoria: "CDs", imagen: "productos/cd/bruno.png", descripcion: "El debut de Bruno Mars con 'Doo-Wops & Hooligans', lleno de hits inolvidables." },
+  { id: 10, nombre: "CD Bob Marley", precio: 60000, categoria: "CDs", imagen: "productos/cd/bob.png", descripcion: "Los mejores éxitos de Bob Marley en CD, un viaje directo al reggae más auténtico." },
+  { id: 11, nombre: "CD Benson Boone / American Heart", precio: 300000, categoria: "CDs", imagen: "productos/cd/benson.png", descripcion: "El álbum 'American Heartbreak' de Benson Boone en CD, con un sonido fresco y juvenil." },
+  { id: 12, nombre: "CD Olivia Rodrigo / Sour", precio: 300000, categoria: "CDs", imagen: "productos/cd/olivia.png", descripcion: "El explosivo debut de Olivia Rodrigo en CD, con todos sus himnos juveniles." },
+  { id: 13, nombre: "CD Kendrick Lamar", precio: 70000, categoria: "CDs", imagen: "productos/cd/kendric.png", descripcion: "Las rimas únicas de Kendrick Lamar en CD, considerado uno de los mejores raperos de su generación." },
+  { id: 14, nombre: "CD Dua Lipa / Radical", precio: 75000, categoria: "CDs", imagen: "productos/cd/dualipa.png", descripcion: "El sonido pop renovado de Dua Lipa en su álbum 'Radical', disponible en CD." },
+  { id: 15, nombre: "CD Los Bunkers", precio: 300000, categoria: "CDs", imagen: "productos/cd/bunkers.png", descripcion: "El rock chileno de Los Bunkers en CD, una pieza esencial para fanáticos nacionales." },
+  { id: 16, nombre: "CD Gorillaz / Demon Days", precio: 300000, categoria: "CDs", imagen: "productos/cd/gorilaz.png", descripcion: "El icónico 'Demon Days' de Gorillaz en CD, con una mezcla única de estilos." },
 
   // Accesorios (6 productos)
-  { id: 17, nombre: "Lector de Vinilos", precio: 200000, categoria: "Accesorios", imagen: "productos/accesorios/lectorvinilo.png" },
-  { id: 18, nombre: "Reproductor CD", precio: 180000, categoria: "Accesorios", imagen: "productos/accesorios/reproductorcd.png" },
-  { id: 19, nombre: "Fundas Vinilos", precio: 300000, categoria: "Accesorios", imagen: "productos/accesorios/fundas.png" },
-  { id: 20, nombre: "Kit Limpieza Vinilo", precio: 70000, categoria: "Accesorios", imagen: "productos/accesorios/kit.png" },
-  { id: 21, nombre: "Maleta Vinilo", precio: 75000, categoria: "Accesorios", imagen: "productos/accesorios/maleta.png" },
-  { id: 22, nombre: "Pua Tornamesa", precio: 100000, categoria: "Accesorios", imagen: "productos/accesorios/pua.png" },
+  { id: 17, nombre: "Lector de Vinilos", precio: 200000, categoria: "Accesorios", imagen: "productos/accesorios/lectorvinilo.png", descripcion: "Reproductor de vinilos de alta calidad, ideal para disfrutar tu colección." },
+  { id: 18, nombre: "Reproductor CD", precio: 180000, categoria: "Accesorios", imagen: "productos/accesorios/reproductorcd.png", descripcion: "Compacto y moderno reproductor de CDs, perfecto para escuchar tu música favorita." },
+  { id: 19, nombre: "Fundas Vinilos", precio: 300000, categoria: "Accesorios", imagen: "productos/accesorios/fundas.png", descripcion: "Set de fundas protectoras para vinilos, mantiene tu colección en perfecto estado." },
+  { id: 20, nombre: "Kit Limpieza Vinilo", precio: 70000, categoria: "Accesorios", imagen: "productos/accesorios/kit.png", descripcion: "Kit de limpieza para vinilos, elimina polvo y estática para mejor sonido." },
+  { id: 21, nombre: "Maleta Vinilo", precio: 75000, categoria: "Accesorios", imagen: "productos/accesorios/maleta.png", descripcion: "Maleta rígida para transportar y proteger tus vinilos de forma segura." },
+  { id: 22, nombre: "Pua Tornamesa", precio: 100000, categoria: "Accesorios", imagen: "productos/accesorios/pua.png", descripcion: "Aguja de repuesto para tornamesa, garantiza la mejor calidad de reproducción." },
 ];
+
 
 // -------------------------
 // FUNCIONES GENERALES
@@ -114,7 +115,7 @@ function mostrarOtrosProductos(idActual) {
         <div class="card-body text-center">
           <h6 class="card-title">${p.nombre}</h6>
           <p class="card-text">$${p.precio}</p>
-          <a href="detalle.html?id=${p.id}" class="btn btn-primary btn-sm">Ver detalle</a>
+          <a href="detalle.html?id=${p.id}" class="btn btn-danger btn-sm">Ver detalle</a>
         </div>
       </div>
     `;
@@ -131,18 +132,27 @@ function mostrarDetalle() {
   let cont = document.getElementById("detalle-producto");
   cont.innerHTML = `
     <div class="card p-4 bg-light text-dark">
-      <h2>${p.nombre}</h2>
-      <p>${p.descripcion || ""}</p>
-      <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
-      <p>Precio: $${p.precio}</p>
+      <div class="row align-items-center">
+        <!-- Columna izquierda: Imagen -->
+        <div class="col-md-6 text-center">
+          <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
+        </div>
 
-      <div class="d-flex align-items-center mb-3">
-        <button class="btn btn-outline-secondary btn-sm" id="btnMenos">-</button>
-        <span id="cantidadProducto" class="mx-3">1</span>
-        <button class="btn btn-outline-secondary btn-sm" id="btnMas">+</button>
+        <!-- Columna derecha: Descripción -->
+        <div class="col-md-6">
+          <h2>${p.nombre}</h2>
+          <p>${p.descripcion || ""}</p>
+          <p><strong>Precio:</strong> $${p.precio}</p>
+
+          <div class="d-flex align-items-center mb-3">
+            <button class="btn btn-outline-secondary btn-sm" id="btnMenos">-</button>
+            <span id="cantidadProducto" class="mx-3">1</span>
+            <button class="btn btn-outline-secondary btn-sm" id="btnMas">+</button>
+          </div>
+
+          <button class="btn btn-danger" id="btnAgregar">Agregar al carrito</button>
+        </div>
       </div>
-
-      <button class="btn btn-success" id="btnAgregar">Agregar al carrito</button>
     </div>
   `;
 
@@ -162,6 +172,7 @@ function mostrarDetalle() {
 
   mostrarOtrosProductos(id);
 }
+
 
 
 // Recupera el carrito desde localStorage
@@ -248,7 +259,7 @@ if (formRegistro) {
     const confirmar = document.getElementById("confirmar").value.trim();
 
     // Validación correo
-    const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
+    const emailRegex = /^[^\s@]+@(duocuc.cl|duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
     if (!emailRegex.test(email)) {
       alert("El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com");
       return; // Detiene aquí
@@ -285,7 +296,7 @@ if (formLogin) {
     const password = document.getElementById("password").value.trim();
 
     // Validación correo
-    const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
+    const emailRegex = /^[^\s@]+@(duocuc.cl|duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
     if (!emailRegex.test(email)) {
       alert("El correo debe ser de dominio @duoc.cl, @profesor.duoc.cl o @gmail.com");
       return; // Detiene aquí
@@ -334,7 +345,7 @@ window.addEventListener("DOMContentLoaded", () => {
     li.className = "nav-item d-flex align-items-center ms-3";
 
     li.innerHTML = `
-      <img src="usuario.jpg" alt="avatar" 
+      <img src="images/usuario.png" alt="avatar" 
            style="height:40px; width:40px; border-radius:50%; border:2px solid #fff; margin-right:8px;">
       <button id="btnLogout" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
     `;

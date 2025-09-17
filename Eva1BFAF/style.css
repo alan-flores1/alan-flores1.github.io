@@ -135,13 +135,13 @@ footer.footer .copyright {
 
 
 .compact-card {
-  width: 240px;       /* ancho más pequeño */
-  height: 400px;      /* alto más pequeño */
+  width: 240px;       
+  height: 400px;      
   overflow: hidden;
 }
 
 .compact-card .card-img-top {
-  height: 200px;       /* imagen más pequeña */
+  height: 200px;       
   object-fit: cover;
 }
 
