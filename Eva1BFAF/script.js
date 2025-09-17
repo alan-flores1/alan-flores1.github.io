@@ -1,64 +1,101 @@
-// Lista de productos disponibles en la tienda
+// -------------------------
+// LISTA DE PRODUCTOS
+// -------------------------
 const productos = [
-  { id: 1, nombre: "CD Rock", precio: 10000, descripcion: "Clásicos del rock", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 2, nombre: "Vinilo Jazz", precio: 15000, descripcion: "Vinilo de jazz clásico", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 3, nombre: "CD Pop", precio: 12000, descripcion: "Hits modernos del pop", imagen: "Disco_de_Vinilo.jpg" },
-  { id: 4, nombre: "Vinilo Indie", precio: 14000, descripcion: "Sonidos indie auténticos", imagen: "Disco_de_Vinilo.jpg" }
+  // Vinilos (8 productos)
+  { id: 1, nombre: "Vinilo Luis Miguel", precio: 80000, categoria: "Vinilos", imagen: "productos/vinilos/viniloluismi.jpeg" },
+  { id: 2, nombre: "Los Prisioneros", precio: 150000, categoria: "Vinilos", imagen: "productos/vinilos/viniloprisioneros.jpeg" },
+  { id: 3, nombre: "Vinilo Queen", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/viniloqueen.jpeg" },
+  { id: 4, nombre: "Vinilo Beethoven", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/beethoven.png" },
+  { id: 5, nombre: "Vinilo Green Day", precio: 70000, categoria: "Vinilos", imagen: "productos/vinilos/greenday.png" },
+  { id: 6, nombre: "Vinilo Artic Monkey", precio: 75000, categoria: "Vinilos", imagen: "productos/vinilos/articmonkey.png" },
+  { id: 7, nombre: "Vinilo Pearl Jam Ten", precio: 65000, categoria: "Vinilos", imagen: "productos/vinilos/pearljam.png" },
+  { id: 8, nombre: "Vinilo Doja Cat / Planet Her", precio: 300000, categoria: "Vinilos", imagen: "productos/vinilos/dojacat.png" },
+
+  // CDs (8 productos)
+  { id: 9, nombre: "CD Bruno Mars / Doo-Wops", precio: 50000, categoria: "CDs", imagen: "productos/cd/bruno.png" },
+  { id: 10, nombre: "CD Bob Marley", precio: 60000, categoria: "CDs", imagen: "productos/cd/bob.png" },
+  { id: 11, nombre: "CD Benson Boone / American Heart", precio: 300000, categoria: "CDs", imagen: "productos/cd/benson.png" },
+  { id: 12, nombre: "CD Olivia Rodrigo / Sour", precio: 300000, categoria: "CDs", imagen: "productos/cd/olivia.png" },
+  { id: 13, nombre: "CD Kendrick Lamar", precio: 70000, categoria: "CDs", imagen: "productos/cd/kendric.png" },
+  { id: 14, nombre: "CD Dua Lipa / Radical", precio: 75000, categoria: "CDs", imagen: "productos/cd/dualipa.png" },
+  { id: 15, nombre: "CD Los Bunkers", precio: 300000, categoria: "CDs", imagen: "productos/cd/bunkers.png" },
+  { id: 16, nombre: "CD Gorillaz / Demon Days", precio: 300000, categoria: "CDs", imagen: "productos/cd/gorilaz.png" },
+
+  // Accesorios (6 productos)
+  { id: 17, nombre: "Lector de Vinilos", precio: 200000, categoria: "Accesorios", imagen: "productos/accesorios/lectorvinilo.png" },
+  { id: 18, nombre: "Reproductor CD", precio: 180000, categoria: "Accesorios", imagen: "productos/accesorios/reproductorcd.png" },
+  { id: 19, nombre: "Fundas Vinilos", precio: 300000, categoria: "Accesorios", imagen: "productos/accesorios/fundas.png" },
+  { id: 20, nombre: "Kit Limpieza Vinilo", precio: 70000, categoria: "Accesorios", imagen: "productos/accesorios/kit.png" },
+  { id: 21, nombre: "Maleta Vinilo", precio: 75000, categoria: "Accesorios", imagen: "productos/accesorios/maleta.png" },
+  { id: 22, nombre: "Pua Tornamesa", precio: 100000, categoria: "Accesorios", imagen: "productos/accesorios/pua.png" },
 ];
 
-// Función para agregar un producto al carrito
+// -------------------------
+// FUNCIONES GENERALES
+// -------------------------
 function agregarCarrito(id, cantidad = 1) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  // Buscar el producto en la lista de productos
   let producto = productos.find(p => p.id === id);
-  if (!producto) {
-    alert("Error: producto no encontrado");
-    return;
-  }
+  if (!producto) return alert("Producto no encontrado");
 
-  // Buscar si ya está en el carrito
-  let existente = carrito.find(item => item.id === id);
+  let existente = carrito.find(p => p.id === id);
   if (existente) {
-    existente.cantidad += cantidad; // aumenta cantidad
+    existente.cantidad += cantidad;
   } else {
-    carrito.push({ ...producto, cantidad }); // agrega nuevo
+    carrito.push({ ...producto, cantidad });
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
   alert(`${producto.nombre} (x${cantidad}) añadido al carrito ✅`);
 }
 
-// Función para mostrar los productos en la página productos.html
-function mostrarProductos() {
-  let cont = document.getElementById("productos-lista"); // Contenedor donde van los productos
+// -------------------------
+// FUNCION PARA RENDERIZAR PRODUCTOS EN CAROUSEL
+// -------------------------
+function renderizarCarousel(categoria, carouselId) {
+  const lista = productos.filter(p => p.categoria === categoria);
+  const carouselItems = document.querySelectorAll(`#${carouselId} .carousel-item`);
 
-  // Recorre la lista de productos y los dibuja en la página
-  productos.forEach(p => {
-    let div = document.createElement("div");
-    div.className = "col-md-3 producto-card"; // Bootstrap: 4 columnas por fila
-    div.innerHTML = `
-      <h3>${p.nombre}</h3>
-      <p>$${p.precio}</p>
-      <p>${p.descripcion}</p>
-      <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
-      <!-- Botón para agregar directamente al carrito -->
-      <button class="btn btn-success btn-sm" onclick="agregarCarrito(${p.id})">Agregar</button>
-      <!-- Botón que envía al detalle del producto -->
-      <button class="btn btn-info btn-sm" onclick="verDetalle(${p.id})">Ver detalle</button>
-      
-    `;
-    cont.appendChild(div);
+  carouselItems.forEach((item, index) => {
+    const contenedor = item.querySelector(".row");
+    contenedor.innerHTML = "";
+
+    const start = index * 4; // 4 productos por item
+    const end = start + 4;
+    const slice = lista.slice(start, end);
+
+    slice.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "col-6 col-sm-4 col-md-3 col-lg-2";
+      div.innerHTML = `
+        <div class="card compact-card">
+          <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}">
+          <div class="card-body text-center p-2">
+            <h6 class="card-title mb-1">${p.nombre}</h6>
+            <p class="card-text mb-1">$${p.precio}</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="detalle.html?id=${p.id}" class="btn btn-secondary btn-sm">Ver detalle</a>
+              <button class="btn btn-danger btn-sm" onclick="agregarCarrito(${p.id})">Comprar</button>
+            </div>
+          </div>
+        </div>
+      `;
+      contenedor.appendChild(div);
+    });
   });
 }
 
-// Función que redirige a la página de detalle con el id del producto
-function verDetalle(id) {
-  // Cambia la URL a detalle.html?id=ID_PRODUCTO
-  window.location.href = "detalle.html?id=" + id;
-}
+// -------------------------
+// RENDERIZAR TODOS LOS CAROUSELES AL CARGAR
+// -------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarCarousel("Vinilos", "carouselVinilos");
+  renderizarCarousel("CDs", "carouselVHS");
+  renderizarCarousel("Accesorios", "carouselAccesorios");
+});
 
-// Función para mostrar la información del producto en detalle.html
+
 function mostrarDetalle() {
   let params = new URLSearchParams(window.location.search);
   let id = parseInt(params.get("id"));
@@ -81,6 +118,7 @@ function mostrarDetalle() {
       <button class="btn btn-success" id="btnAgregar">Agregar al carrito</button>
     </div>
   `;
+
   let cantidad = 1;
   document.getElementById("btnMenos").onclick = () => {
     if (cantidad > 1) cantidad--;
@@ -91,54 +129,80 @@ function mostrarDetalle() {
     document.getElementById("cantidadProducto").textContent = cantidad;
   };
 
-  // Agregar al carrito
   document.getElementById("btnAgregar").onclick = () => {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.push({ ...p, cantidad });
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`${p.nombre} (x${cantidad}) añadido al carrito ✅`);
+    agregarCarrito(id, cantidad);
   };
 }
 
-// Función para mostrar los productos del carrito en carrito.html
+
+// Recupera el carrito desde localStorage
 function mostrarCarrito() {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  let lista = document.getElementById("lista-carrito");
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const lista = document.getElementById("lista-carrito");
+  const totalEl = document.getElementById("carrito-total");
+
+  lista.innerHTML = ""; // limpiar lista
   let total = 0;
-  lista.innerHTML = "";
 
-  carrito.forEach((item, i) => {
-    let li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
+  if (carrito.length === 0) {
+    lista.innerHTML = `<p>Tu carrito está vacío.</p>`;
+    totalEl.textContent = "$0";
+    return;
+  }
 
-    li.innerHTML = `
-      <div class="d-flex align-items-center">
-        <img src="${item.imagen}" alt="${item.nombre}" style="width:50px; height:50px; object-fit:cover; margin-right:10px;">
-        <div>
-          <strong>${item.nombre}</strong><br>
-          Cantidad: ${item.cantidad} | Precio: $${item.precio}
+  carrito.forEach((item, index) => {
+    total += item.precio * item.cantidad;
+
+    const div = document.createElement("div");
+    div.className = "card mb-3 bg-dark text-white shadow-sm";
+    div.innerHTML = `
+      <div class="row g-0 align-items-center p-2">
+        <div class="col-3">
+          <img src="${item.imagen}" class="img-fluid rounded" alt="${item.nombre}">
+        </div>
+        <div class="col-5">
+          <h6>${item.nombre}</h6>
+          <p>Precio: $${item.precio}</p>
+          <p>Cantidad: ${item.cantidad}</p>
+        </div>
+        <div class="col-4 text-end">
+          <button class="btn btn-danger btn-sm eliminar">Eliminar</button>
         </div>
       </div>
     `;
 
-    // Botón para eliminar
-    let btn = document.createElement("button");
-    btn.className = "btn btn-danger btn-sm";
-    btn.textContent = "Eliminar";
-    btn.onclick = () => {
-      carrito.splice(i, 1);
+    // Botón eliminar
+    div.querySelector(".eliminar").addEventListener("click", () => {
+      carrito.splice(index, 1);
       localStorage.setItem("carrito", JSON.stringify(carrito));
       mostrarCarrito();
-    };
+    });
 
-    li.appendChild(btn);
-    lista.appendChild(li);
-
-    total += item.precio * item.cantidad;
+    lista.appendChild(div);
   });
 
-  document.getElementById("carrito-total").textContent = "Total: $" + total;
+  totalEl.textContent = "$" + total;
 }
+
+// Botón pagar (vacía carrito)
+const btnPagar = document.getElementById("btnPagar");
+if (btnPagar) {
+  btnPagar.addEventListener("click", () => {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+      return;
+    }
+    const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    alert(`Gracias por tu compra! Total: $${total}`);
+    localStorage.removeItem("carrito");
+    mostrarCarrito();
+  });
+}
+
+// Mostrar el carrito al cargar
+document.addEventListener("DOMContentLoaded", mostrarCarrito);
+
 
 
 // -------------------------
@@ -256,3 +320,5 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
