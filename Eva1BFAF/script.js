@@ -241,7 +241,7 @@ window.addEventListener("DOMContentLoaded", () => {
     li.className = "nav-item d-flex align-items-center ms-3";
 
     li.innerHTML = `
-      <img src="usuario.png" alt="avatar" 
+      <img src="usuario.jpg" alt="avatar" 
            style="height:40px; width:40px; border-radius:50%; border:2px solid #fff; margin-right:8px;">
       <button id="btnLogout" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
     `;
