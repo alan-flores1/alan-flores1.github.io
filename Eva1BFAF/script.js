@@ -95,6 +95,33 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarCarousel("Accesorios", "carouselAccesorios");
 });
 
+function mostrarOtrosProductos(idActual) {
+  const cont = document.getElementById("otros-productos");
+  cont.innerHTML = "";
+
+  // Tomamos 4 productos distintos al actual
+  const relacionados = productos
+    .filter(p => p.id !== idActual)
+    .sort(() => 0.5 - Math.random()) // mezcla aleatoria
+    .slice(0, 4);
+
+  relacionados.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "col-6 col-md-3";
+    div.innerHTML = `
+      <div class="card h-100 bg-light text-dark">
+        <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}">
+        <div class="card-body text-center">
+          <h6 class="card-title">${p.nombre}</h6>
+          <p class="card-text">$${p.precio}</p>
+          <a href="detalle.html?id=${p.id}" class="btn btn-primary btn-sm">Ver detalle</a>
+        </div>
+      </div>
+    `;
+    cont.appendChild(div);
+  });
+}
+
 
 function mostrarDetalle() {
   let params = new URLSearchParams(window.location.search);
@@ -105,7 +132,7 @@ function mostrarDetalle() {
   cont.innerHTML = `
     <div class="card p-4 bg-light text-dark">
       <h2>${p.nombre}</h2>
-      <p>${p.descripcion}</p>
+      <p>${p.descripcion || ""}</p>
       <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid my-3" style="max-width:300px;">
       <p>Precio: $${p.precio}</p>
 
@@ -132,6 +159,8 @@ function mostrarDetalle() {
   document.getElementById("btnAgregar").onclick = () => {
     agregarCarrito(id, cantidad);
   };
+
+  mostrarOtrosProductos(id);
 }
 
 
@@ -319,6 +348,8 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html"; // vuelve al home
     });
   }
+
+  
 });
 
 
