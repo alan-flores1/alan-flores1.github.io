@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión - Eva1</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<body class="bg-black text-white"></body>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/Icono.png" alt="Logo" width="30" height="24" 
+           class="d-inline-block align-text-top me-2">
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="productos.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacto.html">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="Sesion.html">Inicio de sesión</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link p-0" href="carrito.html">
+        <img src="images/carrito.png" alt="Carrito" width="30" height="30" class="carrito">
+        </a>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 500px;">
+      <div class="text-center mb-4">
+        <img src="images/Icono.png" alt="Logo" class="mb-2" style="height:60px;">
+        <h4 class="fw-bold">Empresa</h4>
+      </div>
+
+      <form id="formLogin">
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="recordarme">
+            <label class="form-check-label" for="recordarme">Recordarme</label>
+          </div>
+          <a href="#" class="text-decoration-none forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="btn btn-danger w-100">Iniciar sesión</button>
+        <div class="text-center mt-3">
+          <small>¿No tienes cuenta? <a href="Registro.html">Registrarse</a></small>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+ 
+ 
