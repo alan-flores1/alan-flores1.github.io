@@ -384,8 +384,13 @@ function mostrarCarrito() {
             <button class="btn btn-outline-light btn-sm menos">-</button>
             <span>${item.cantidad}</span>
             <button class="btn btn-outline-light btn-sm mas">+</button>
+            
           </div>
           <p>Subtotal: $${item.precio * item.cantidad}</p>
+          <p>Descripcion: ${item.descripcion}</p>
+
+          
+
         </div>
         <div class="col-4 text-end">
           <button class="btn btn-danger btn-sm eliminar">Eliminar</button>
